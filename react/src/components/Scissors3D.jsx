@@ -12,6 +12,7 @@ export default function Scissors3D({ isDragging }) {
   // Animation : Valeurs d'amortissement (Damping) pour la fluidité
   const currentAmplitude = useRef(0.05);
   const currentSpeed = useRef(2);
+  const phase = useRef(0); // <-- Nouvelle variable pour éviter les sauts d'animation
 
   // Sauvegarde des Quaternions intiaux pour une rotation pure (évite le gigotement)
   const initialQuaternions = useMemo(() => {
@@ -23,28 +24,28 @@ export default function Scissors3D({ isDragging }) {
     };
   }, [nodes]);
 
-  // Axe de rotation local (le gond correspond à l'axe Y local dans ton fichier)
-  const rotationAxis = new THREE.Vector3(0, 0, 1);
-
   // Boucle d'animation (useFrame s'exécute à chaque frame)
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!initialQuaternions) return;
 
     // L'assignation directe (sans accélération) de l'étape précédente
     currentSpeed.current = isDragging ? 30 : 2;
     currentAmplitude.current = isDragging ? 0.3 : 0.1;
 
-    const time = state.clock.getElapsedTime();
-    const oscillation = (Math.sin(time * currentSpeed.current) + 1) / 2;
+    // Accumuler la phase avec le delta time pour éviter les sauts brutaux
+    phase.current += delta * currentSpeed.current;
+
+    const oscillation = (Math.sin(phase.current) + 1) / 2;
     const baseAngle = oscillation * currentAmplitude.current;
 
     // --- MODIFICATION ICI : Mouvement 50/50 ---
-    // On donne exactement la moitié de l'angle total à chaque lame
-    const angle = baseAngle * 0.99;
+    // On ajoute un petit offset négatif pour les rapprocher un peu par défaut
+    const angleOffset = -0.05;
+    const angle = baseAngle + angleOffset;
 
     const rotationAxis = new THREE.Vector3(0, 0, 1); // Axe Z
 
-    // On applique le même angle aux deux, toujours avec des signes opposés
+    // On applique le même angle aux deux, MAIS avec des signes opposés !
     const topRotation = new THREE.Quaternion().setFromAxisAngle(rotationAxis, angle);
     const bottomRotation = new THREE.Quaternion().setFromAxisAngle(rotationAxis, angle);
     // ------------------------------------------

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown } from 'lucide-react';
 import profileImg from '../assets/photocvpng.png';
+import cvPdf from '../assets/CV_Paul_Gournay_Stage_Robotique_2026_new3.pdf';
 
 export function Hero() {
   return (
@@ -33,8 +34,8 @@ export function Hero() {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="/src/assets/CV_Paul_Gournay_Stage_Robotique_2026_new3.pdf"
-              download
+              href={cvPdf}
+              download="CV_Paul_Gournay_Stage_Robotique_2026.pdf"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#ff6a00] text-[#121214] font-bold rounded hover:bg-[#ff8b3d] transition-colors relative overflow-hidden group"
             >
               <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
@@ -72,7 +73,7 @@ export function Hero() {
             {/* The photo itself */}
             <div className="relative z-10 w-full h-full flex items-end justify-center">
               <img
-                src="/src/assets/photocvpng.png"
+                src={profileImg}
                 alt="Paul Gournay"
                 className="w-auto h-full object-contain object-bottom filter drop-shadow-[0_0_20px_rgba(255,106,0,0.15)] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 group-hover:drop-shadow-[0_10px_25px_rgba(255,106,0,0.3)]"
               />

@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import Scissors3D from './components/Scissors3D';
+import ModelViewer3D from './components/ModelViewer3D';
 import photoProfile from './assets/photocvpng.png';
 import logigameVideo from './assets/LogiGame_Demo.mp4';
+import studyCountModel from './assets/StudyCount_3D_model.glb';
+import photoAppStudyCount from './assets/Photo_app_StudyCount.png';
+import photoIrlStudyCount from './assets/Photo_irl_StudyCount.png';
 
 // --- COMPOSANTS RÉUTILISABLES ---
 
@@ -13,62 +17,112 @@ const SkillBadge = ({ skill, isCouture }) => (
   </span>
 );
 
-const ProjectCard = ({ title, tags, description, has3DViewer, videoUrl, githubUrl, isCouture }) => (
-  <div className={`relative p-6 flex flex-col group mt-4 ${isCouture ? 'bg-white border-zigzag shadow-brutal' : 'bg-slate-800 border-2 border-slate-700 shadow-[4px_4px_0px_0px_rgba(34,197,94,0.5)]'}`}>
-    
-    {isCouture && (
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-slate-200/80 backdrop-blur-sm border border-slate-300 shadow-sm rotate-[-2deg] z-10 flex items-center justify-center">
-        <div className="w-2 h-2 rounded-full bg-slate-400 shadow-inner"></div>
-      </div>
-    )}
+const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCouture }) => {
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
-    <div className={`mb-6 h-48 border flex items-center justify-center overflow-hidden relative transition-colors ${isCouture ? 'bg-stone-100 border-slate-200 cutting-mat-bg group-hover:bg-slate-50' : 'bg-slate-900 border-slate-600'}`}>
-      {has3DViewer ? (
-        <div className="text-slate-400 text-sm flex flex-col items-center p-4 text-center font-mono">
-          <svg className="w-8 h-8 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-          <span>[ Espace Viewer 3D Thingiverse à intégrer ici ]</span>
+  const hasMultipleMedia = media.length > 1;
+  const currentMedia = media.length > 0 ? media[currentMediaIndex] : null;
+
+  const nextMedia = () => setCurrentMediaIndex((prev) => (prev + 1) % media.length);
+  const prevMedia = () => setCurrentMediaIndex((prev) => (prev - 1 + media.length) % media.length);
+
+  return (
+    <div className={`relative p-6 flex flex-col group mt-4 ${isCouture ? 'bg-white border-zigzag shadow-brutal' : 'bg-slate-800 border-2 border-slate-700 shadow-[4px_4px_0px_0px_rgba(34,197,94,0.5)]'}`}>
+      
+      {isCouture && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-slate-200/80 backdrop-blur-sm border border-slate-300 shadow-sm rotate-[-2deg] z-10 flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full bg-slate-400 shadow-inner"></div>
         </div>
-      ) : videoUrl ? (
-        <video 
-          src={videoUrl} 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="w-full h-full object-cover"
-        />
-      ) : (
-        <span className="text-slate-400 text-sm flex flex-col items-center font-mono">
-          <svg className="w-8 h-8 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          [ Insérer Image ou Vidéo ici ]
-        </span>
+      )}
+
+      <div className={`mb-6 h-72 border flex items-center justify-center overflow-hidden relative transition-colors group/media ${isCouture ? 'bg-stone-100 border-slate-200 cutting-mat-bg group-hover:bg-slate-50' : 'bg-slate-900 border-slate-600'}`}>
+        
+        {currentMedia ? (
+          <>
+            {currentMedia.type === '3d' && (
+              <div className="w-full h-full cursor-grab active:cursor-grabbing">
+                <ModelViewer3D modelUrl={currentMedia.url} />
+              </div>
+            )}
+            {currentMedia.type === 'video' && (
+              <video 
+                src={currentMedia.url} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-full h-full object-cover"
+              />
+            )}
+            {currentMedia.type === 'image' && (
+              <img 
+                src={currentMedia.url} 
+                alt={`${title} screenshot`}
+                className="w-full h-full object-contain"
+              />
+            )}
+
+            {/* Slider Controls */}
+            {hasMultipleMedia && (
+              <>
+                <button 
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); prevMedia(); }}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-0 group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button 
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); nextMedia(); }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-0 group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                {/* Dots indicator */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                  {media.map((_, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`w-2 h-2 rounded-full transition-colors ${idx === currentMediaIndex ? (isCouture ? 'bg-orange-500' : 'bg-green-400') : 'bg-slate-500/50'}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        ) : (
+          <span className="text-slate-400 text-sm flex flex-col items-center font-mono">
+            <svg className="w-8 h-8 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            [ Aucun média disponible ]
+          </span>
+        )}
+      </div>
+      
+      <h3 className={`text-2xl font-bold mb-4 ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>{title}</h3>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag, idx) => (
+          <span key={idx} className={`${isCouture ? 'woven-label px-2 py-0.5 text-xs text-orange-600' : 'bg-slate-700/50 text-green-400 px-2 py-1 text-xs border border-slate-600'} font-mono`}>
+            {isCouture ? tag : `> ${tag}`}
+          </span>
+        ))}
+      </div>
+      <p className={`text-sm leading-relaxed flex-grow border-t pt-4 mt-2 mb-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-200' : 'text-slate-400 border-solid border-slate-700'}`}>
+        {description}
+      </p>
+      {githubUrl && (
+        <a 
+          href={githubUrl} 
+          target="_blank" 
+          rel="noreferrer"
+          className={`mt-auto self-start inline-flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all ${isCouture ? 'bg-slate-800 text-stone-50 shadow-[3px_3px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 hover:bg-green-400 hover:text-slate-900'}`}
+        >
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd"></path></svg>
+          {isCouture ? 'Code source' : 'EXECUTE ./github.sh'}
+        </a>
       )}
     </div>
-    
-    <h3 className={`text-2xl font-bold mb-4 ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>{title}</h3>
-    <div className="flex flex-wrap gap-2 mb-4">
-      {tags.map((tag, idx) => (
-        <span key={idx} className={`${isCouture ? 'woven-label px-2 py-0.5 text-xs text-orange-600' : 'bg-slate-700/50 text-green-400 px-2 py-1 text-xs border border-slate-600'} font-mono`}>
-          {isCouture ? tag : `> ${tag}`}
-        </span>
-      ))}
-    </div>
-    <p className={`text-sm leading-relaxed flex-grow border-t pt-4 mt-2 mb-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-200' : 'text-slate-400 border-solid border-slate-700'}`}>
-      {description}
-    </p>
-    {githubUrl && (
-      <a 
-        href={githubUrl} 
-        target="_blank" 
-        rel="noreferrer"
-        className={`mt-auto self-start inline-flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all ${isCouture ? 'bg-slate-800 text-stone-50 shadow-[3px_3px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 hover:bg-green-400 hover:text-slate-900'}`}
-      >
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd"></path></svg>
-        {isCouture ? 'Code source' : 'EXECUTE ./github.sh'}
-      </a>
-    )}
-  </div>
-);
+  );
+};
 
 const TimelineItem = ({ year, title, subtitle, description, isCouture }) => (
   <div className="relative pl-8 sm:pl-32 py-8 group">
@@ -221,28 +275,33 @@ const Portfolio = ({ isCouture }) => {
       title: "Passerelle Vocale Hi-Fi",
       tags: ["C++", "ESP32", "API SinricPro", "IoT", "Électronique"],
       description: "Rétro-ingénierie d'un protocole infrarouge propriétaire de 48 bits et conception d'une passerelle vocale (Google Home) avec dimensionnement d'un circuit d'amplification NPN.",
-      has3DViewer: false
+      media: []
     },
     {
       title: "Timer Pomodoro « Studycount »",
       tags: ["C++", "ESP32", "Impression 3D", "E-paper"],
       description: "Conception complète d'un timer connecté. (Boîtier modélisé et imprimé en 3D).",
-      has3DViewer: true,
+      media: [
+        { type: '3d', url: studyCountModel },
+        { type: 'image', url: photoAppStudyCount },
+        { type: 'image', url: photoIrlStudyCount }
+      ],
       githubUrl: "https://github.com/PaulGournay/StudyCount.git"
     },
     {
       title: "LogiGame",
       tags: ["VHDL", "FPGA Xilinx Artix-7", "Vivado", "Architecture Matérielle"],
       description: "Conception d'un cœur de microcontrôleur sur carte ARTY. Intégration d'une UAL, mémoires et automates à états finis.",
-      has3DViewer: false,
-      videoUrl: logigameVideo,
+      media: [
+        { type: 'video', url: logigameVideo }
+      ],
       githubUrl: "https://github.com/Sowker/VHDL2.git"
     },
     {
       title: "Créations Textiles & Ingénierie Pratique",
       tags: ["Design", "Couture", "Matériaux techniques"],
       description: "Transfert de mes compétences de conception 3D vers le textile. Réalisation de A à Z d'un Duffle Bag robuste et d'un sac de magnésie pour l'escalade (optimisé pour la préhension).",
-      has3DViewer: false
+      media: []
     }
   ];
 
