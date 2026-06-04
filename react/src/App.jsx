@@ -8,14 +8,28 @@ import logigameVideo from './assets/LogiGame_Demo.mp4';
 import studyCountModel from './assets/StudyCount_3D_model.glb';
 import photoAppStudyCount from './assets/Photo_app_StudyCount.png';
 import photoIrlStudyCount from './assets/Photo_irl_StudyCount.png';
+import cvPdf from './assets/CV_Paul_Gournay_Stage_Robotique_2026_new3.pdf';
+import imlImg1 from './assets/IML_Project_img1.png';
+import imlImg2 from './assets/IML_Project_img2.png';
+import imlImgResult from './assets/IML_Project_result.png';
+import duffleImgMain from './assets/sewing_pics/DuffleBag_display_pic.jpg';
+import duffleImg1 from './assets/sewing_pics/DuffleBag_1.jpg';
+import duffleImg2 from './assets/sewing_pics/DuffleBag_2.jpg';
+import magnesieImgMain from './assets/sewing_pics/Sac_magnésie_escalade_display_pic.png';
+import magnesieImg1 from './assets/sewing_pics/Sac_magnésie_escalade_1.jpg';
+import magnesieImg2 from './assets/sewing_pics/Sac_magnésie_escalade_2.jpg';
+import magnesieImg3 from './assets/sewing_pics/Sac_magnésie_escalade_3.jpg';
+import magnesieImg4 from './assets/sewing_pics/Sac_magnésie_escalade_4.jpg';
+import graphImg1 from './assets/Graph_Theory_Project/Graph_Theory_Project_1.png';
+import graphImg2 from './assets/Graph_Theory_Project/Graph_Theory_Project_2.png';
+import joGame1 from './assets/JO-Games_project/JO_Game_Badminton_main_menu.png';
+import joGame2 from './assets/JO-Games_project/JO_Game_Badminton.png';
+import joGame3 from './assets/JO-Games_project/JO_Game_Badminton_2.png';
+import joGame4 from './assets/JO-Games_project/JO_Game_Basketball.png';
 
 // --- COMPOSANTS RÉUTILISABLES ---
 
-const SkillBadge = ({ skill, isCouture }) => (
-  <span className={`${isCouture ? 'woven-label px-4 py-1.5 hover:border-orange-500 hover:text-orange-500 hover:-rotate-1' : 'bg-slate-800 border border-slate-600 px-3 py-1 text-green-400 hover:bg-slate-700 hover:text-green-300'} text-sm font-mono transition-colors inline-block transform cursor-default`}>
-    {skill}
-  </span>
-);
+
 
 const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCouture }) => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
@@ -35,7 +49,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
         </div>
       )}
 
-      <div className={`mb-6 h-72 border flex items-center justify-center overflow-hidden relative transition-colors group/media ${isCouture ? 'bg-stone-100 border-slate-200 cutting-mat-bg group-hover:bg-slate-50' : 'bg-slate-900 border-slate-600'}`}>
+      <div className={`mb-6 w-full border flex items-center justify-center overflow-hidden relative transition-colors group/media ${isCouture ? 'aspect-square bg-stone-100 border-slate-200 cutting-mat-bg group-hover:bg-slate-50' : 'h-72 bg-slate-900 border-slate-600'}`}>
         
         {currentMedia ? (
           <>
@@ -106,9 +120,9 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
           </span>
         ))}
       </div>
-      <p className={`text-sm leading-relaxed flex-grow border-t pt-4 mt-2 mb-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-200' : 'text-slate-400 border-solid border-slate-700'}`}>
+      <div className={`text-sm leading-relaxed flex-grow border-t pt-4 mt-2 mb-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-200' : 'text-slate-400 border-solid border-slate-700'}`}>
         {description}
-      </p>
+      </div>
       {githubUrl && (
         <a 
           href={githubUrl} 
@@ -124,26 +138,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
   );
 };
 
-const TimelineItem = ({ year, title, subtitle, description, isCouture }) => (
-  <div className="relative pl-8 sm:pl-32 py-8 group">
-    <div className={`absolute left-4 sm:left-[7.5rem] top-0 bottom-0 ${isCouture ? 'w-[2px] bg-orange-500 group-last:bg-gradient-to-b group-last:from-orange-500 group-last:to-transparent' : 'w-px border-l-2 border-dashed border-green-500/50 group-last:border-none'}`}></div>
-    
-    <div className={`absolute top-9 shadow-sm transition-transform group-hover:scale-125 ${isCouture ? 'left-3 sm:left-[7.25rem] w-5 h-5 bg-stone-50 border-4 border-orange-500 rounded-full' : 'left-3.5 sm:left-[7.3rem] w-3 h-3 bg-green-400'}`}></div>
 
-    <div className="flex flex-col sm:flex-row items-start mb-1 group-last:mb-0">
-      <div className={`sm:absolute sm:left-0 sm:w-24 font-mono font-bold sm:text-right mt-1 sm:mt-0 text-lg ${isCouture ? 'text-orange-500' : 'text-green-400'}`}>
-        {isCouture ? year : `[${year}]`}
-      </div>
-      <div className={`p-6 border relative ml-2 w-full transition-shadow ${isCouture ? 'bg-white border-slate-200 shadow-sm hover:shadow-brutal' : 'bg-slate-800/80 backdrop-blur border-slate-700 hover:border-green-400'}`}>
-        {isCouture && <div className="absolute top-5 -left-4 w-4 h-px border-t-[2px] border-dashed border-orange-500"></div>}
-        
-        <h4 className={`text-2xl font-bold ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>{title}</h4>
-        <div className={`text-sm font-mono mb-3 ${isCouture ? 'text-slate-500' : 'text-green-600'}`}>{isCouture ? subtitle : `sys.source > ${subtitle}`}</div>
-        {description && <p className={`text-sm pt-3 ${isCouture ? 'text-slate-600 border-t border-dashed border-slate-200' : 'text-slate-400 border-t border-slate-700'}`}>{description}</p>}
-      </div>
-    </div>
-  </div>
-);
 
 // --- SECTIONS DU PORTFOLIO ---
 
@@ -197,90 +192,51 @@ const Hero = ({ isCouture }) => (
       <p className={`text-lg max-w-2xl mx-auto mb-10 leading-relaxed border-t border-b py-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-300' : 'font-mono text-slate-400 border-solid border-slate-700'}`}>
         Passionné par la conception de systèmes de A à Z. J'assemble des lignes de code, des composants électroniques et des tissus pour créer des projets fonctionnels et innovants. En recherche de stage (20 semaines) à partir de novembre 2026.
       </p>
-
-      <a href="/CV_2026_Stage_Paul_Gournay.pdf" target="_blank" rel="noreferrer"
-        className={`inline-block px-8 py-4 font-bold text-lg transition-all ${isCouture ? 'bg-slate-800 text-stone-50 rounded shadow-[4px_4px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 font-mono hover:bg-green-400 hover:text-slate-900'}`}>
-        {isCouture ? 'Télécharger mon CV' : './download_cv.sh'}
-      </a>
     </div>
   </section>
 );
 
-const Skills = ({ isCouture }) => {
-  const allCategories = [
-    {
-      title: "Embarqué & Électronique",
-      icon: "⚡",
-      skills: ["C/C++ (ESP32/Arduino)", "VHDL (FPGA)", "Rétro-ingénierie", "IoT"]
-    },
-    {
-      title: "Software & Data",
-      icon: "💻",
-      skills: ["Python", "Vue.js", "Node.js", "Machine Learning (Scikit-learn)"]
-    },
-    {
-      title: "Maker & Design",
-      icon: "🧵",
-      skills: ["Impression 3D (Fusion 360)", "Couture (Création textile)", "Président asso Efrei Design"]
-    }
-  ];
 
-  const skillCategories = allCategories.filter(cat => isCouture ? cat.title === "Maker & Design" : cat.title !== "Maker & Design");
-
-  return (
-    <section className={`py-24 px-6 relative overflow-hidden ${isCouture ? 'bg-slate-900 text-stone-50' : 'bg-slate-950 text-stone-50'}`}>
-      
-      {isCouture ? (
-        <>
-          <div className="absolute inset-0 opacity-10 cross-stitch-bg pointer-events-none"></div>
-          <div className="absolute top-0 left-0 w-full border-t-[3px] border-dashed border-orange-500/60"></div>
-        </>
-      ) : (
-        <div className="absolute top-0 left-0 w-full border-t border-slate-800"></div>
-      )}
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        <h2 className={`text-4xl md:text-5xl font-bold mb-16 text-center text-stone-50 ${isCouture ? 'font-serif' : 'font-mono'}`}>{isCouture ? 'Ma Boîte à Outils' : 'sys.get_capabilities()'}</h2>
-        <div className={`grid grid-cols-1 md:grid-cols-${isCouture ? '1' : '2'} gap-10 max-w-${isCouture ? 'md' : '4xl'} mx-auto`}>
-          {skillCategories.map((cat, idx) => (
-            <div key={idx} className={`p-8 relative group shadow-lg ${isCouture ? 'bg-slate-800/80 backdrop-blur-sm border border-slate-700' : 'bg-slate-900 border border-slate-800'}`}>
-              
-              {isCouture && (
-                <>
-                  <div className="absolute top-2 left-2 w-3 h-3 border-t border-l border-orange-500/50"></div>
-                  <div className="absolute top-2 right-2 w-3 h-3 border-t border-r border-orange-500/50"></div>
-                  <div className="absolute bottom-2 left-2 w-3 h-3 border-b border-l border-orange-500/50"></div>
-                  <div className="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-orange-500/50"></div>
-                </>
-              )}
-              
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform origin-left">{cat.icon}</div>
-              <h3 className={`text-xl font-bold mb-6 pb-4 ${isCouture ? 'font-serif text-stone-100 border-b border-dashed border-slate-600' : 'font-mono text-green-400 border-b border-slate-700'}`}>{cat.title}</h3>
-              <div className="flex flex-wrap gap-3">
-                {cat.skills.map((skill, sIdx) => (
-                  <SkillBadge key={sIdx} skill={skill} isCouture={isCouture} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Portfolio = ({ isCouture }) => {
   const allProjects = [
     {
-      title: "Passerelle Vocale Hi-Fi",
-      tags: ["C++", "ESP32", "API SinricPro", "IoT", "Électronique"],
-      description: "Rétro-ingénierie d'un protocole infrarouge propriétaire de 48 bits et conception d'une passerelle vocale (Google Home) avec dimensionnement d'un circuit d'amplification NPN.",
-      media: []
+      title: "LogiGame (Architecture Matérielle)",
+      tags: ["VHDL", "FPGA Xilinx Artix-7", "Vivado", "Architecture Matérielle"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            <strong>Le projet :</strong> Conception d'un cœur de microcontrôleur sur une carte FPGA ARTY (Xilinx Artix-7). L'objectif était de recréer de zéro un système capable d'exécuter des instructions logiques et arithmétiques comme un vrai processeur.
+          </p>
+          <p>
+            <strong>Sous le capot :</strong> Développement complet en VHDL sous Vivado. J'ai modélisé et intégré une UAL (Unité Arithmétique et Logique), géré l'interfaçage avec des mémoires RAM/ROM, et conçu des automates à états finis (FSM) pour synchroniser le chemin de données.
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment le code de haut niveau est réellement traduit et exécuté physiquement par des portes logiques et des signaux d'horloge.
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'video', url: logigameVideo }
+      ],
+      githubUrl: "https://github.com/Sowker/VHDL2.git"
     },
     {
-      title: "Timer Pomodoro « Studycount »",
-      tags: ["C++", "ESP32", "Impression 3D", "E-paper"],
-      description: "Conception complète d'un timer connecté. (Boîtier modélisé et imprimé en 3D).",
+      title: "Timer Pomodoro Connecté « Studycount »",
+      tags: ["C++", "ESP32", "Impression 3D", "E-paper", "IoT"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            <strong>Le projet :</strong> Création d'un timer physique intelligent basé sur la méthode Pomodoro pour booster la productivité, de la conception électronique jusqu'au produit final posé sur le bureau.
+          </p>
+          <p>
+            <strong>Sous le capot :</strong> J'ai programmé un microcontrôleur ESP32 en C++ pour piloter un écran E-paper ultra basse consommation. Côté mécanique, j'ai entièrement modélisé le boîtier sur-mesure avant de l'imprimer en 3D pour assembler parfaitement tous les composants.
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> La satisfaction immense de concevoir un produit complet de A à Z. C'est l'essence même du Maker : allier le code, l'électronique et la conception 3D pour créer un objet concret et utile au quotidien.
+          </p>
+        </div>
+      ),
       media: [
         { type: '3d', url: studyCountModel },
         { type: 'image', url: photoAppStudyCount },
@@ -289,19 +245,131 @@ const Portfolio = ({ isCouture }) => {
       githubUrl: "https://github.com/PaulGournay/StudyCount.git"
     },
     {
-      title: "LogiGame",
-      tags: ["VHDL", "FPGA Xilinx Artix-7", "Vivado", "Architecture Matérielle"],
-      description: "Conception d'un cœur de microcontrôleur sur carte ARTY. Intégration d'une UAL, mémoires et automates à états finis.",
-      media: [
-        { type: 'video', url: logigameVideo }
-      ],
-      githubUrl: "https://github.com/Sowker/VHDL2.git"
+      title: "Passerelle Vocale Hi-Fi & Infrarouge",
+      tags: ["C++", "ESP32", "API SinricPro", "IoT", "Électronique"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            <strong>Le projet :</strong> Donner une seconde vie à une vieille chaîne Hi-Fi en la connectant à Google Home. L'objectif : pouvoir allumer, éteindre et contrôler le volume de l'ampli à la voix.
+          </p>
+          <p>
+            <strong>Le challenge :</strong> L'ampli utilisait un protocole infrarouge propriétaire de 48 bits non documenté. J'ai dû faire de la rétro-ingénierie matérielle pour décoder ces trames IR à l'aide d'un oscilloscope. J'ai ensuite conçu un circuit d'amplification NPN et utilisé l'API SinricPro avec un ESP32 pour faire le pont avec l'écosystème Google.
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> Un vrai travail d'investigation ! Réussir à hacker un vieux signal infrarouge pour le marier avec le cloud moderne m'a beaucoup appris sur le traitement du signal et l'interfaçage hardware.
+          </p>
+        </div>
+      ),
+      media: []
     },
     {
-      title: "Créations Textiles & Ingénierie Pratique",
-      tags: ["Design", "Couture", "Matériaux techniques"],
-      description: "Transfert de mes compétences de conception 3D vers le textile. Réalisation de A à Z d'un Duffle Bag robuste et d'un sac de magnésie pour l'escalade (optimisé pour la préhension).",
-      media: []
+      title: "🏅 JO-Games : Spécial JO de Paris",
+      tags: ["Python", "Pygame", "POO", "Git", "Jeux Vidéo"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            <strong>Le projet :</strong> Développement en équipe de 5 d'une compilation de 4 mini-jeux d'arcade (Badminton, Basket, Tir, Javelot). Le petit plus du projet : on avait anticipé l'événement en basant toute l'application sur le thème des JO de Paris !
+          </p>
+          <p>
+            <strong>Le challenge :</strong> Se répartir le travail pour créer un menu commun et coder des mécaniques très différentes pour chaque sport (physique du volant, gravité du ballon, jauges de puissance, collisions).
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> Le projet idéal pour vraiment comprendre la Programmation Orientée Objet (POO) et la collaboration technique (Git). Ça m'a surtout forcé à écrire un code propre et structuré pour que les 4 autres membres de l'équipe puissent bosser dessus sans s'arracher les cheveux !
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: joGame1 },
+        { type: 'image', url: joGame2 },
+        { type: 'image', url: joGame3 },
+        { type: 'image', url: joGame4 }
+      ],
+      githubUrl: "https://github.com/GuillaumeBernardEFREI/JO-Games"
+    },
+    {
+      title: "🖥️ Optimisation de Datacenter & Théorie des Graphes",
+      tags: ["Algorithmique", "Python", "Dijkstra", "Floyd-Warshall", "Théorie des Graphes"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            <strong>Le défi :</strong> Migrer des serveurs en urgence suite à une fuite d'eau, sans jamais poser un serveur lourd sur un plus léger pour éviter la casse. C'est la logique mathématique des Tours de Hanoï appliquée à la vraie vie !
+          </p>
+          <p>
+            <strong>Sous le capot :</strong><br/>
+            - <em>Modélisation :</em> Traduction du problème physique en graphe (ce qui a fait apparaître visuellement une belle fractale : le Triangle de Sierpiński).<br/>
+            - <em>Algorithmique :</em> Implémentation de Dijkstra et Floyd-Warshall pour trouver le chemin le plus court et prouver que la migration prendra toujours 2ⁿ - 1 déplacements.
+          </p>
+          <p>
+            <strong>Ma conclusion :</strong> Bien que Dijkstra soit ultra-rapide, j'ai défendu l'usage de Floyd-Warshall. Ce dernier calcule tous les itinéraires à l'avance, ce qui permet au système de s'adapter instantanément si le technicien se trompe de baie en pleine manipulation, sans avoir à recalculer !
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: graphImg1 },
+        { type: 'image', url: graphImg2 }
+      ],
+      githubUrl: "https://github.com/ant-one-dev/Graph-Theory.git"
+    },
+    {
+      title: "🎓 Prédiction de la Réussite Scolaire par Machine Learning",
+      tags: ["Python", "Machine Learning", "Scikit-learn", "Data Science"],
+      description: (
+        <div className="flex flex-col gap-2">
+          <span>Développement d'un pipeline de Machine Learning visant à prédire les scores d'examens d'étudiants en fonction de 20 variables académiques, personnelles et socio-économiques (6 607 enregistrements).</span>
+          <ul className="list-disc pl-4 mt-2 space-y-2">
+            <li><strong>Méthodologie :</strong> Prétraitement (StandardScaler, MinMaxScaler), et comparaison One-Hot Encoding vs Label Encoding.</li>
+            <li><strong>Modélisation :</strong> Régression Linéaire (incluant descente de gradient manuelle) et KNN optimisé via GridSearchCV. Validation croisée avancée.</li>
+            <li><strong>Résultats Clés :</strong> R² de 0,7696 et MAE de 0,45 pour la Régression Linéaire avec OHE.</li>
+            <li><strong>Applications :</strong> Système d'alerte précoce pour élèves à risque et conseil académique personnalisé.</li>
+          </ul>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: imlImg1 },
+        { type: 'image', url: imlImg2 },
+        { type: 'image', url: imlImgResult }
+      ],
+      githubUrl: "https://github.com/Clayton2394/Project_IML.git"
+    },
+    {
+      title: "Duffle-Bag Patchwork & Upcycling",
+      tags: ["Couture", "Upcycling", "Design", "Patchwork", "Cuir"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            Pour ce projet, j'ai vraiment voulu m'amuser avec les matières et la récup'. L'idée, c'était de créer un sac de voyage 100% unique à partir de pièces qui avaient déjà un vécu. J'ai assemblé un gros patchwork avec plein de trucs différents : du vieux jean, du tissu camouflage, de la flanelle, et même du tissu batik malaisien pour apporter une petite touche d'originalité.
+          </p>
+          <p>
+            Pour les détails, j'ai récupéré du vrai cuir sur d'anciens manteaux, et j'ai eu l'occasion de tester la gravure laser directement sur le denim pour réaliser les motifs panthère et le lettrage "For Nothing". Et le petit clin d'œil perso dont je suis fier : j'ai cousu le patch d'Efrei Design, pour marquer mon année en tant que président de l'asso !
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: duffleImgMain },
+        { type: 'image', url: duffleImg1 },
+        { type: 'image', url: duffleImg2 }
+      ]
+    },
+    {
+      title: "Sac de Magnésie \"PG\"",
+      tags: ["Couture", "Upcycling", "Modélisation 3D", "Escalade"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            Étant grimpeur, ça me tenait à cœur de fabriquer mon propre matos ! J'ai imaginé ce sac de magnésie en mode upcycling, avec un côté un peu streetwear qui change de ce qu'on voit d'habitude en salle. La structure est faite à partir de vieux pantalons en jean et de chutes de tissu camo que j'ai assemblés en patchwork.
+          </p>
+          <p>
+            À l'intérieur, j'ai doublé le tout avec de la flanelle pour que la magnésie reste bien en place. J'ai aussi poussé le DIY jusqu'au bout : j'ai modélisé et imprimé mon propre mousqueton en 3D pour l'accrocher au baudrier, et j'ai utilisé de la paracorde pour le système de fermeture, histoire de rester dans l'esprit escalade. Pour finir, j'ai floqué mes initiales en cuir (récupéré dans une ancienne boutique de manteaux) directement sur le devant !
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: magnesieImgMain },
+        { type: 'image', url: magnesieImg1 },
+        { type: 'image', url: magnesieImg2 },
+        { type: 'image', url: magnesieImg3 },
+        { type: 'image', url: magnesieImg4 }
+      ]
     }
   ];
 
@@ -335,45 +403,35 @@ const Portfolio = ({ isCouture }) => {
   );
 };
 
-const Experience = ({ isCouture }) => {
-  const timeline = [
-    {
-      year: "2023 - 2028",
-      title: "Cycle Ingénieur",
-      subtitle: "Efrei Paris",
-      description: "Classé dans le top 8% de la promotion (Prépa intégrée)."
-    },
-    {
-      year: "2025",
-      title: "Semestre d'échange anglophone",
-      subtitle: "Asia Pacific University, Malaisie",
-      description: "Machine Learning et Data Science."
-    },
-    {
-      year: "2025",
-      title: "Stage SWIM (Bénévole International)",
-      subtitle: "ONG KosaBrin, Slovénie",
-      description: "Éco-construction et infrastructures en matériaux de récupération."
-    }
-  ];
 
-  return (
-    <section className={`py-24 px-6 relative ${isCouture ? 'bg-white' : 'bg-slate-950'}`}>
-      <div className={`absolute top-0 left-0 w-full ${isCouture ? 'border-t-[3px] border-dashed border-slate-300' : 'border-t border-slate-800'}`}></div>
 
-      <div className="max-w-3xl mx-auto">
-        <h2 className={`text-4xl md:text-5xl font-bold mb-16 text-center ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>
-          {isCouture ? 'Parcours & Expérience' : 'cat /var/log/experience.log'}
-        </h2>
-        <div className={isCouture ? 'border-zigzag p-6 md:p-12 bg-stone-50 shadow-brutal' : 'border border-slate-800 p-6 md:p-12 bg-slate-900/50'}>
-          {timeline.map((item, idx) => (
-            <TimelineItem key={idx} {...item} isCouture={isCouture} />
-          ))}
-        </div>
+const CVViewer = ({ isCouture }) => (
+  <section className={`py-24 px-6 relative ${isCouture ? 'bg-stone-50' : 'bg-slate-900'}`}>
+    <div className={`absolute top-0 left-0 w-full ${isCouture ? 'border-t-[3px] border-dashed border-slate-300' : 'border-t border-slate-800'}`}></div>
+    <div className="max-w-4xl mx-auto">
+      <h2 className={`text-4xl md:text-5xl font-bold mb-16 text-center ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>
+        {isCouture ? 'Mon Curriculum Vitae' : 'cat /docs/cv.pdf'}
+      </h2>
+      <div className={`w-full h-[80vh] border shadow-xl ${isCouture ? 'border-slate-300 bg-white' : 'border-slate-700 bg-slate-800'} overflow-hidden rounded-lg`}>
+        <iframe 
+          src={cvPdf} 
+          title="CV Paul Gournay" 
+          className="w-full h-full"
+          style={{ border: 'none' }}
+        />
       </div>
-    </section>
-  );
-};
+      <div className="mt-8 text-center">
+        <a 
+          href={cvPdf} 
+          download="CV_Paul_Gournay_Stage_Robotique_2026.pdf"
+          className={`inline-block px-8 py-4 font-bold text-lg transition-all ${isCouture ? 'bg-slate-800 text-stone-50 rounded shadow-[4px_4px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 font-mono hover:bg-green-400 hover:text-slate-900'}`}
+        >
+          {isCouture ? 'Télécharger le PDF' : './download_cv.sh'}
+        </a>
+      </div>
+    </div>
+  </section>
+);
 
 const Footer = ({ isCouture }) => (
   <footer className={`py-12 text-center border-t-4 ${isCouture ? 'bg-slate-900 text-slate-400 border-orange-500' : 'bg-slate-950 text-slate-500 border-green-500'}`}>
@@ -414,37 +472,80 @@ const Footer = ({ isCouture }) => (
 
 const LandingScreen = ({ onSelectTheme }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const [hoveredSection, setHoveredSection] = useState(null);
 
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="h-screen w-full flex flex-col md:flex-row overflow-hidden font-sans relative"
+      className="h-screen w-full flex flex-col overflow-hidden font-sans relative"
     >
-      
-      {/* Header Central / Titre Portfolio */}
-      <div className="absolute top-8 md:top-12 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none drop-shadow-xl text-center w-full">
-        <h1 className="text-3xl md:text-5xl font-bold bg-white/90 backdrop-blur-md px-8 py-3 rounded-full text-slate-900 shadow-lg font-serif">
-          Paul Gournay
+      {/* Header en haut à gauche */}
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-50 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 pointer-events-none drop-shadow-xl">
+        <h1 className="text-xl md:text-2xl font-bold bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-white border border-white/20 shadow-lg font-mono">
+          Paul.Gournay
         </h1>
-        <div className="mt-4 flex items-center gap-4 bg-slate-900 text-white px-6 py-2 rounded-full shadow-xl border border-slate-700">
-          <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-          <p className="text-sm md:text-base font-mono uppercase tracking-[0.3em] font-bold">
+        <div className="flex items-center gap-3 bg-slate-900/50 backdrop-blur-md text-white px-4 py-2 rounded-full border border-slate-700/50">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          <p className="text-xs font-mono uppercase tracking-[0.2em] font-bold">
             Portfolio
           </p>
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
         </div>
       </div>
 
-      {/* Côté Couture (Gauche) */}
-      <div className="relative flex-1 bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center p-8 border-b-4 md:border-b-0 md:border-r-4 border-dashed border-orange-500 group">
+      {/* Côté Code (Haut) */}
+      <div 
+        onMouseEnter={() => setHoveredSection('code')}
+        onMouseLeave={() => setHoveredSection(null)}
+        className="relative bg-slate-900 flex flex-col items-center justify-center p-8 group overflow-hidden border-b-4 border-dashed border-orange-500 transition-all duration-700 ease-in-out"
+        style={{ flex: hoveredSection === 'couture' ? 1 : 4 }}
+      >
+        {/* Lignes de code en fond */}
+        <div className="absolute inset-0 opacity-10 font-mono text-xs text-green-400 p-8 pointer-events-none whitespace-pre select-none flex flex-col">
+          {`function initializeSystem() {
+  const hardware = connectToESP32();
+  const brain = setupNeuralNetwork();
+  hardware.onReady(() => {
+    brain.execute(hardware);
+  });
+}
+while(true) {
+  listen();
+}`}
+        </div>
+        
+        <h2 className="text-4xl md:text-5xl font-mono font-bold text-stone-50 mb-4 text-center z-10 mt-16 md:mt-16">Ingénierie & Code</h2>
+        <p className="text-slate-400 font-mono mb-8 text-center max-w-sm z-10 text-sm md:text-base">Systèmes embarqués, VHDL, robotique et développement logiciel.</p>
+        
+        {/* Bouton Clavier */}
+        <button 
+          onClick={() => onSelectTheme('code')}
+          className="relative group/btn z-10 focus:outline-none"
+        >
+          <div className="absolute inset-0 bg-green-600 rounded-xl translate-y-3 transition-transform group-active/btn:translate-y-1"></div>
+          <div className="relative bg-slate-800 text-green-400 font-mono font-bold text-xl px-12 py-4 rounded-xl border-2 border-slate-700 uppercase tracking-widest transform transition-transform group-active/btn:translate-y-2 flex items-center gap-3">
+            Enter
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      {/* Côté Couture (Bas) */}
+      <div 
+        onMouseEnter={() => setHoveredSection('couture')}
+        onMouseLeave={() => setHoveredSection(null)}
+        className="relative bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center p-8 group transition-all duration-700 ease-in-out"
+        style={{ flex: hoveredSection === 'couture' ? 4 : 1 }}
+      >
         <div className="absolute inset-0 bg-stone-50 opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity duration-700"></div>
-        <h2 className="text-4xl md:text-6xl font-serif font-bold text-slate-800 mb-6 text-center">Atelier Couture</h2>
-        <p className="text-slate-500 font-mono mb-16 text-center max-w-sm">Design textile, modélisation 3D et confection sur-mesure.</p>
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-800 mb-4 text-center">Atelier Couture</h2>
+        <p className="text-slate-500 font-mono mb-8 text-center max-w-sm text-sm md:text-base">Design textile, modélisation 3D et confection sur-mesure.</p>
         
         {/* Composant Ciseaux Slider avec Canvas 3D */}
-        <div className="relative w-80 h-16 flex items-center mt-4">
+        <div className="relative w-80 h-16 flex items-center mt-2">
           {/* Ligne pointillée type patron de couture */}
           <div className="absolute left-8 right-0 h-0 border-t-[3px] border-dashed border-slate-700 opacity-80 z-0"></div>
           
@@ -479,40 +580,6 @@ const LandingScreen = ({ onSelectTheme }) => {
         </div>
       </div>
 
-      {/* Côté Code (Droite) */}
-      <div className="relative flex-1 bg-slate-900 flex flex-col items-center justify-center p-8 group overflow-hidden">
-        {/* Lignes de code en fond */}
-        <div className="absolute inset-0 opacity-10 font-mono text-xs text-green-400 p-8 pointer-events-none whitespace-pre select-none flex flex-col">
-          {`function initializeSystem() {
-  const hardware = connectToESP32();
-  const brain = setupNeuralNetwork();
-  hardware.onReady(() => {
-    brain.execute(hardware);
-  });
-}
-while(true) {
-  listen();
-}`}
-        </div>
-        
-        <h2 className="text-4xl md:text-6xl font-mono font-bold text-stone-50 mb-6 text-center z-10">Ingénierie & Code</h2>
-        <p className="text-slate-400 font-mono mb-16 text-center max-w-sm z-10">Systèmes embarqués, VHDL, robotique et développement logiciel.</p>
-        
-        {/* Bouton Clavier */}
-        <button 
-          onClick={() => onSelectTheme('code')}
-          className="relative group/btn z-10 focus:outline-none"
-        >
-          <div className="absolute inset-0 bg-green-600 rounded-xl translate-y-3 transition-transform group-active/btn:translate-y-1"></div>
-          <div className="relative bg-slate-800 text-green-400 font-mono font-bold text-xl px-12 py-6 rounded-xl border-2 border-slate-700 uppercase tracking-widest transform transition-transform group-active/btn:translate-y-2 flex items-center gap-3">
-            Enter
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </div>
-        </button>
-      </div>
-
     </motion.div>
   );
 };
@@ -544,9 +611,8 @@ export default function App() {
       </button>
 
       <Hero isCouture={isCouture} />
-      <Skills isCouture={isCouture} />
       <Portfolio isCouture={isCouture} />
-      <Experience isCouture={isCouture} />
+      <CVViewer isCouture={isCouture} />
       <Footer isCouture={isCouture} />
     </motion.div>
   );

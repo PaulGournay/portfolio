@@ -34,17 +34,8 @@ export function Hero() {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href={cvPdf}
-              download="CV_Paul_Gournay_Stage_Robotique_2026.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#ff6a00] text-[#121214] font-bold rounded hover:bg-[#ff8b3d] transition-colors relative overflow-hidden group"
-            >
-              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-              <Download size={20} className="group-hover:-translate-y-1 transition-transform" />
-              <span>Télécharger mon CV</span>
-            </a>
-            <a
               href="#portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#2b2b30] text-[#f3f3f0] font-bold rounded hover:border-[#ff6a00] hover:text-[#ff6a00] transition-colors bg-[#1e1e22]/50 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#ff6a00] text-[#121214] font-bold rounded hover:bg-[#ff8b3d] transition-colors"
             >
               Voir mes projets
             </a>
