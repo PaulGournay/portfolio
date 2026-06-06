@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.glb'],
-  base: '/portfolio/', // <-- AJOUTE CETTE LIGNE (le nom exact de ton dépôt GitHub)
+  base: '/', // <-- AJOUTE CETTE LIGNE (le nom exact de ton dépôt GitHub)
 })
