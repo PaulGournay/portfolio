@@ -84,13 +84,13 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
               <>
                 <button 
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); prevMedia(); }}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-0 group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
                 <button 
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); nextMedia(); }}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-0 group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
