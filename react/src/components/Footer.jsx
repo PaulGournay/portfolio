@@ -40,11 +40,11 @@ export function Footer() {
                   <Linkedin size={20} />
                   <span>LinkedIn</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#e6e6e0] hover:text-[#ff6a00] transition-colors">
+                <a href="https://github.com/PaulGournay" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#e6e6e0] hover:text-[#ff6a00] transition-colors">
                   <Github size={20} />
                   <span>GitHub</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#e6e6e0] hover:text-[#ff6a00] transition-colors">
+                <a href="https://www.thingiverse.com/P0lfr/designs" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#e6e6e0] hover:text-[#ff6a00] transition-colors">
                   <Wrench size={20} />
                   <span>Thingiverse</span>
                 </a>
@@ -53,11 +53,8 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-dashed border-[#2b2b30] text-center text-[#e6e6e0]/50 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© 2026 Paul Gournay. Tous droits réservés.</p>
-          <p className="font-mono text-xs">
-            Fait avec <span className="text-[#ff6a00]">♥</span>, React & beaucoup de café
-          </p>
+        <div className="pt-8 border-t border-dashed border-[#2b2b30] text-center text-[#e6e6e0]/50 text-sm flex justify-center items-center">
+          <p>© 2026 Paul Gournay</p>
         </div>
       </div>
     </footer>

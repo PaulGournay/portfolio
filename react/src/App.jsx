@@ -26,6 +26,9 @@ import joGame1 from './assets/JO-Games_project/JO_Game_Badminton_main_menu.png';
 import joGame2 from './assets/JO-Games_project/JO_Game_Badminton.png';
 import joGame3 from './assets/JO-Games_project/JO_Game_Badminton_2.png';
 import joGame4 from './assets/JO-Games_project/JO_Game_Basketball.png';
+import passerelleImg from './assets/esp_32_connected_cd_player_.jpg';
+import orProjectImg from './assets/Operations_research_project.png';
+import logoEfrei from './assets/Logo efrei design couleur.png';
 
 // --- COMPOSANTS RÉUTILISABLES ---
 
@@ -187,11 +190,31 @@ const Hero = ({ isCouture }) => (
         Paul GOURNAY
       </h1>
       <h2 className={`text-xl md:text-2xl font-medium mb-6 ${isCouture ? 'text-slate-600' : 'font-mono text-slate-400'}`}>
-        Étudiant Ingénieur en <span className={`font-bold ${isCouture ? 'text-blue-600' : 'text-green-400'}`}>Robotique & Systèmes Embarqués</span> | Maker & Créateur
+        Étudiant en 3ème année @ <span className={`font-bold ${isCouture ? 'text-blue-600' : 'text-green-400'}`}>EFREI Paris</span>
       </h2>
-      <p className={`text-lg max-w-2xl mx-auto mb-10 leading-relaxed border-t border-b py-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-300' : 'font-mono text-slate-400 border-solid border-slate-700'}`}>
-        Passionné par la conception de systèmes de A à Z. J'assemble des lignes de code, des composants électroniques et des tissus pour créer des projets fonctionnels et innovants. En recherche de stage (20 semaines) à partir de novembre 2026.
+      <p className={`text-lg max-w-2xl mx-auto leading-relaxed border-t border-b py-6 ${isCouture ? 'text-slate-600 border-dashed border-slate-300 mb-8' : 'font-mono text-slate-400 border-solid border-slate-700 mb-10'}`}>
+        À la recherche d’un stage de 5 mois en <strong>Système Embarqué / Robotique</strong> à partir de Novembre 2026.
       </p>
+
+      {isCouture && (
+        <div className="max-w-4xl mx-auto mt-8 p-8 bg-white/60 backdrop-blur border border-slate-200 shadow-sm rounded-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden text-left">
+          <div className="absolute top-0 left-0 w-2 h-full bg-orange-400"></div>
+          <div className="flex-1 text-slate-600 text-lg leading-relaxed">
+            <p className="mb-4">
+              À côté de mes études d'ingénieur, la couture est devenue une vraie passion. J'ai voulu profiter de ce portfolio pour présenter aussi mon univers créatif et mes réalisations textiles.
+            </p>
+            <p className="mb-4">
+              J'ajoute peu à peu ici les projets que j'ai pu documenter. Il y en a beaucoup d'autres (retouches, créations complètes...) que je n'avais pas forcément pris en photo sur le moment, mais qui viendront étoffer cette page avec le temps !
+            </p>
+            <p>
+              Cette fibre créative m'a d'ailleurs poussé à m'investir à fond dans la vie associative de mon école, jusqu'à devenir président de l'association <strong>Efrei Design</strong>.
+            </p>
+          </div>
+          <div className="w-40 shrink-0 flex justify-center">
+            <img src={logoEfrei} alt="Logo Efrei Design" className="w-full h-auto object-contain drop-shadow-md transition-transform hover:scale-105 duration-300" />
+          </div>
+        </div>
+      )}
     </div>
   </section>
 );
@@ -206,13 +229,13 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            <strong>Le projet :</strong> Conception d'un cœur de microcontrôleur sur une carte FPGA ARTY (Xilinx Artix-7). L'objectif était de recréer de zéro un système capable d'exécuter des instructions logiques et arithmétiques comme un vrai processeur.
+            Conception d'un cœur de microcontrôleur sur une carte FPGA ARTY (Xilinx Artix-7). L'objectif était de recréer de zéro un système capable d'exécuter des instructions logiques et arithmétiques comme un vrai processeur.
           </p>
           <p>
-            <strong>Sous le capot :</strong> Développement complet en VHDL sous Vivado. J'ai modélisé et intégré une UAL (Unité Arithmétique et Logique), géré l'interfaçage avec des mémoires RAM/ROM, et conçu des automates à états finis (FSM) pour synchroniser le chemin de données.
+            Développement complet en VHDL sous Vivado. J'ai modélisé et intégré une UAL (Unité Arithmétique et Logique), géré l'interfaçage avec des mémoires RAM/ROM, et conçu des automates à états finis (FSM) pour synchroniser le chemin de données.
           </p>
           <p>
-            <strong>Ce que j'en retiens :</strong> Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment le code de haut niveau est réellement traduit et exécuté physiquement par des portes logiques et des signaux d'horloge.
+            Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment le code de haut niveau est réellement traduit et exécuté physiquement par des portes logiques et des signaux d'horloge.
           </p>
         </div>
       ),
@@ -227,13 +250,13 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            <strong>Le projet :</strong> Création d'un timer physique intelligent basé sur la méthode Pomodoro pour booster la productivité, de la conception électronique jusqu'au produit final posé sur le bureau.
+            Création d'un timer physique intelligent basé sur la méthode Pomodoro pour booster la productivité, de la conception électronique jusqu'au produit final posé sur le bureau.
           </p>
           <p>
-            <strong>Sous le capot :</strong> J'ai programmé un microcontrôleur ESP32 en C++ pour piloter un écran E-paper ultra basse consommation. Côté mécanique, j'ai entièrement modélisé le boîtier sur-mesure avant de l'imprimer en 3D pour assembler parfaitement tous les composants.
+            J'ai programmé un microcontrôleur ESP32 en C++ pour piloter un écran E-paper ultra basse consommation. Côté mécanique, j'ai entièrement modélisé le boîtier sur-mesure avant de l'imprimer en 3D pour assembler parfaitement tous les composants.
           </p>
           <p>
-            <strong>Ce que j'en retiens :</strong> La satisfaction immense de concevoir un produit complet de A à Z. C'est l'essence même du Maker : allier le code, l'électronique et la conception 3D pour créer un objet concret et utile au quotidien.
+            La satisfaction immense de concevoir un produit complet de A à Z. C'est l'essence même du Maker : allier le code, l'électronique et la conception 3D pour créer un objet concret et utile au quotidien.
           </p>
         </div>
       ),
@@ -250,17 +273,20 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            <strong>Le projet :</strong> Donner une seconde vie à une vieille chaîne Hi-Fi en la connectant à Google Home. L'objectif : pouvoir allumer, éteindre et contrôler le volume de l'ampli à la voix.
+            Donner une seconde vie à une vieille chaîne Hi-Fi en la connectant à Google Home. L'objectif : pouvoir allumer, éteindre et contrôler le volume du lecteur CD à la voix.
           </p>
           <p>
-            <strong>Le challenge :</strong> L'ampli utilisait un protocole infrarouge propriétaire de 48 bits non documenté. J'ai dû faire de la rétro-ingénierie matérielle pour décoder ces trames IR à l'aide d'un oscilloscope. J'ai ensuite conçu un circuit d'amplification NPN et utilisé l'API SinricPro avec un ESP32 pour faire le pont avec l'écosystème Google.
+            Le lecteur CD utilisait un protocole infrarouge propriétaire de 48 bits non documenté. J'ai dû faire de la rétro-ingénierie pour décoder ces trames IR en utilisant une LED réceptrice et un second ESP32. Ce fut un vrai défi car le signal comportait énormément de bruit qu'il a fallu filtrer. J'ai ensuite conçu un circuit d'amplification NPN et utilisé l'API SinricPro pour faire le pont avec l'écosystème Google.
           </p>
           <p>
-            <strong>Ce que j'en retiens :</strong> Un vrai travail d'investigation ! Réussir à hacker un vieux signal infrarouge pour le marier avec le cloud moderne m'a beaucoup appris sur le traitement du signal et l'interfaçage hardware.
+            Un vrai travail d'investigation ! Réussir à hacker un vieux signal infrarouge pour le marier avec le cloud moderne m'a beaucoup appris sur le traitement du signal et l'interfaçage hardware.
           </p>
         </div>
       ),
-      media: []
+      media: [
+        { type: 'image', url: passerelleImg }
+      ],
+      githubUrl: "https://github.com/PaulGournay/CD-Player-google-home.git"
     },
     {
       title: "🏅 JO-Games : Spécial JO de Paris",
@@ -268,13 +294,13 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            <strong>Le projet :</strong> Développement en équipe de 5 d'une compilation de 4 mini-jeux d'arcade (Badminton, Basket, Tir, Javelot). Le petit plus du projet : on avait anticipé l'événement en basant toute l'application sur le thème des JO de Paris !
+            Développement en équipe de 5 d'une compilation de 4 mini-jeux d'arcade (Badminton, Basket, Tir, Javelot). Le petit plus du projet : on avait anticipé l'événement en basant toute l'application sur le thème des JO de Paris !
           </p>
           <p>
-            <strong>Le challenge :</strong> Se répartir le travail pour créer un menu commun et coder des mécaniques très différentes pour chaque sport (physique du volant, gravité du ballon, jauges de puissance, collisions).
+            Se répartir le travail pour créer un menu commun et coder des mécaniques très différentes pour chaque sport (physique du volant, gravité du ballon, jauges de puissance, collisions).
           </p>
           <p>
-            <strong>Ce que j'en retiens :</strong> Le projet idéal pour vraiment comprendre la Programmation Orientée Objet (POO) et la collaboration technique (Git). Ça m'a surtout forcé à écrire un code propre et structuré pour que les 4 autres membres de l'équipe puissent bosser dessus sans s'arracher les cheveux !
+            Le projet idéal pour vraiment comprendre la Programmation Orientée Objet (POO) et la collaboration technique (Git). Ça m'a surtout forcé à écrire un code propre et structuré pour que les 4 autres membres de l'équipe puissent bosser dessus sans s'arracher les cheveux !
           </p>
         </div>
       ),
@@ -292,15 +318,14 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            <strong>Le défi :</strong> Migrer des serveurs en urgence suite à une fuite d'eau, sans jamais poser un serveur lourd sur un plus léger pour éviter la casse. C'est la logique mathématique des Tours de Hanoï appliquée à la vraie vie !
+            Migrer des serveurs en urgence suite à une fuite d'eau, sans jamais poser un serveur lourd sur un plus léger pour éviter la casse. C'est la logique mathématique des Tours de Hanoï appliquée à la vraie vie !
           </p>
           <p>
-            <strong>Sous le capot :</strong><br/>
             - <em>Modélisation :</em> Traduction du problème physique en graphe (ce qui a fait apparaître visuellement une belle fractale : le Triangle de Sierpiński).<br/>
             - <em>Algorithmique :</em> Implémentation de Dijkstra et Floyd-Warshall pour trouver le chemin le plus court et prouver que la migration prendra toujours 2ⁿ - 1 déplacements.
           </p>
           <p>
-            <strong>Ma conclusion :</strong> Bien que Dijkstra soit ultra-rapide, j'ai défendu l'usage de Floyd-Warshall. Ce dernier calcule tous les itinéraires à l'avance, ce qui permet au système de s'adapter instantanément si le technicien se trompe de baie en pleine manipulation, sans avoir à recalculer !
+            Bien que Dijkstra soit ultra-rapide, j'ai défendu l'usage de Floyd-Warshall. Ce dernier calcule tous les itinéraires à l'avance, ce qui permet au système de s'adapter instantanément si le technicien se trompe de baie en pleine manipulation, sans avoir à recalculer !
           </p>
         </div>
       ),
@@ -370,6 +395,27 @@ const Portfolio = ({ isCouture }) => {
         { type: 'image', url: magnesieImg3 },
         { type: 'image', url: magnesieImg4 }
       ]
+    },
+    {
+      title: "Solveur du Problème de Transport (Recherche Opérationnelle)",
+      tags: ["Python", "Recherche Opérationnelle", "Algorithmique", "CLI"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            Développement en équipe de 4 d'une application en ligne de commande (CLI) en Python pour modéliser et résoudre le problème de transport classique, en minimisant les coûts d'acheminement entre fournisseurs et clients.
+          </p>
+          <p>
+            J'ai implémenté les algorithmes de résolution à la main sans bibliothèque externe : méthodes du coin Nord-Ouest et Balas-Hammer pour la solution initiale, parcours en largeur (BFS) pour valider le graphe connexe, puis la méthode du Stepping-Stone pour l'optimisation itérative.
+          </p>
+          <p>
+            Un excellent projet pour mettre en pratique des concepts mathématiques poussés et développer une logique d'optimisation stricte, tout en gérant le travail collaboratif avec Git.
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'image', url: orProjectImg }
+      ],
+      githubUrl: "https://github.com/tarkhog25/Operations_Research_project.git"
     }
   ];
 
@@ -382,7 +428,7 @@ const Portfolio = ({ isCouture }) => {
       
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-center ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>
-          {isCouture ? 'Portfolio Projets' : 'dir ./projects'}
+          {isCouture ? 'Portfolio Projets' : 'ls ./projects'}
         </h2>
         
         {isCouture ? (
@@ -453,15 +499,15 @@ const Footer = ({ isCouture }) => (
         <a href="https://linkedin.com/in/paul-gournay-358138291" target="_blank" rel="noreferrer" className={`text-stone-50 transition-colors font-medium ${isCouture ? 'hover:text-orange-500' : 'hover:text-green-400'}`}>
           LinkedIn
         </a>
-        <a href="#" target="_blank" rel="noreferrer" className={`text-stone-50 transition-colors font-medium ${isCouture ? 'hover:text-orange-500' : 'hover:text-green-400'}`}>
+        <a href="https://github.com/PaulGournay" target="_blank" rel="noreferrer" className={`text-stone-50 transition-colors font-medium ${isCouture ? 'hover:text-orange-500' : 'hover:text-green-400'}`}>
           GitHub
         </a>
-        <a href="#" target="_blank" rel="noreferrer" className={`text-stone-50 transition-colors font-medium ${isCouture ? 'hover:text-orange-500' : 'hover:text-green-400'}`}>
+        <a href="https://www.thingiverse.com/P0lfr/designs" target="_blank" rel="noreferrer" className={`text-stone-50 transition-colors font-medium ${isCouture ? 'hover:text-orange-500' : 'hover:text-green-400'}`}>
           Thingiverse
         </a>
       </div>
       <div className="mt-12 text-xs border-t border-slate-800 pt-6 font-mono opacity-50">
-        © 2026 Paul GOURNAY. Fait avec React & Tailwind CSS. Assemblé à la main.
+        © 2026 Paul Gournay
       </div>
     </div>
   </footer>
@@ -516,7 +562,7 @@ while(true) {
         </div>
         
         <h2 className="text-4xl md:text-5xl font-mono font-bold text-stone-50 mb-4 text-center z-10 mt-16 md:mt-16">Ingénierie & Code</h2>
-        <p className="text-slate-400 font-mono mb-8 text-center max-w-sm z-10 text-sm md:text-base">Systèmes embarqués, VHDL, robotique et développement logiciel.</p>
+        <p className="text-slate-400 font-mono mb-8 text-center max-w-sm z-10 text-sm md:text-base">Systèmes embarqués, intelligence artificielle, algorithmique et développement logiciel.</p>
         
         {/* Bouton Clavier */}
         <button 
