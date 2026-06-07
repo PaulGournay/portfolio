@@ -229,13 +229,13 @@ const Portfolio = ({ isCouture }) => {
       description: (
         <div className="flex flex-col gap-4">
           <p>
-            Conception d'un cœur de microcontrôleur sur une carte FPGA ARTY (Xilinx Artix-7). L'objectif était de recréer de zéro un système capable d'exécuter des instructions logiques et arithmétiques comme un vrai processeur.
+            Conception d'un cœur de microcontrôleur sur carte FPGA ARTY et création de "LogiGame", un jeu de réflexe interactif exploitant directement cette architecture matérielle.
           </p>
           <p>
-            Développement complet en VHDL sous Vivado. J'ai modélisé et intégré une UAL (Unité Arithmétique et Logique), géré l'interfaçage avec des mémoires RAM/ROM, et conçu des automates à états finis (FSM) pour synchroniser le chemin de données.
+            Développement complet en VHDL sous Vivado. J'ai intégré une UAL (Unité Arithmétique et Logique) et géré les mémoires, tout en concevant une machine à états (FSM), des timers et un générateur pseudo-aléatoire (LFSR) pour la logique du jeu.
           </p>
           <p>
-            Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment le code de haut niveau est réellement traduit et exécuté physiquement par des portes logiques et des signaux d'horloge.
+            Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment exécuter des instructions bas niveau et concevoir un système numérique robuste et interactif.
           </p>
         </div>
       ),
