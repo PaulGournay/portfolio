@@ -545,7 +545,7 @@ const LandingScreen = ({ onSelectTheme }) => {
         onMouseEnter={() => setHoveredSection('code')}
         onMouseLeave={() => setHoveredSection(null)}
         className="relative bg-slate-900 flex flex-col items-center justify-center p-8 group overflow-hidden border-b-4 border-dashed border-orange-500 transition-all duration-700 ease-in-out"
-        style={{ flex: hoveredSection === 'couture' ? 1 : 4 }}
+        style={{ flex: hoveredSection === 'couture' ? 1 : 5 }}
       >
         {/* Lignes de code en fond */}
         <div className="absolute inset-0 opacity-10 font-mono text-xs text-green-400 p-8 pointer-events-none whitespace-pre select-none flex flex-col">
@@ -583,15 +583,17 @@ while(true) {
       <div 
         onMouseEnter={() => setHoveredSection('couture')}
         onMouseLeave={() => setHoveredSection(null)}
-        className="relative bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center p-8 group transition-all duration-700 ease-in-out"
-        style={{ flex: hoveredSection === 'couture' ? 4 : 1 }}
+        className={`relative bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center group transition-all duration-700 ease-in-out overflow-hidden ${hoveredSection === 'couture' ? 'p-8' : 'p-4 md:p-8'}`}
+        style={{ flex: hoveredSection === 'couture' ? 5 : 1 }}
       >
         <div className="absolute inset-0 bg-stone-50 opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity duration-700"></div>
-        <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-800 mb-4 text-center">Atelier Couture</h2>
-        <p className="text-slate-500 font-mono mb-8 text-center max-w-sm text-sm md:text-base">Design textile, modélisation 3D et confection sur-mesure.</p>
+        
+        <div className={`flex flex-col items-center transition-transform duration-700 ${hoveredSection === 'couture' ? 'scale-100' : 'scale-90 md:scale-100'}`}>
+          <h2 className={`font-serif font-bold text-slate-800 text-center transition-all duration-500 ${hoveredSection === 'couture' ? 'text-4xl md:text-5xl mb-4' : 'text-2xl md:text-3xl mb-2 md:mb-2'}`}>Atelier Couture</h2>
+          <p className={`text-slate-500 font-mono text-center max-w-sm transition-all duration-500 ${hoveredSection === 'couture' ? 'text-sm md:text-base mb-8 h-auto opacity-100' : 'text-xs md:text-sm mb-4 md:mb-2 h-0 md:h-auto opacity-0 md:opacity-100 overflow-hidden'}`}>Design textile, modélisation 3D et confection sur-mesure.</p>
         
         {/* Composant Ciseaux Slider avec Canvas 3D */}
-        <div className="relative w-80 h-16 flex items-center mt-2">
+        <div className={`relative flex items-center transition-all duration-500 ${hoveredSection === 'couture' ? 'w-80 h-16 mt-2 opacity-100' : 'w-80 h-16 mt-2 opacity-100 md:h-0 md:mt-0 md:opacity-0 md:overflow-hidden'}`}>
           {/* Ligne pointillée type patron de couture */}
           <div className="absolute left-8 right-0 h-0 border-t-[3px] border-dashed border-slate-700 opacity-80 z-0"></div>
           
@@ -623,6 +625,7 @@ while(true) {
               </Canvas>
             </div>
           </motion.div>
+        </div>
         </div>
       </div>
 
