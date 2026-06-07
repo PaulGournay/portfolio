@@ -545,7 +545,7 @@ const LandingScreen = ({ onSelectTheme }) => {
         onMouseEnter={() => setHoveredSection('code')}
         onMouseLeave={() => setHoveredSection(null)}
         className="relative bg-slate-900 flex flex-col items-center justify-center p-8 group overflow-hidden border-b-4 border-dashed border-orange-500 transition-all duration-700 ease-in-out"
-        style={{ flex: hoveredSection === 'couture' ? 1 : 5 }}
+        style={{ flex: hoveredSection === 'couture' ? 3 : 5 }}
       >
         {/* Lignes de code en fond */}
         <div className="absolute inset-0 opacity-10 font-mono text-xs text-green-400 p-8 pointer-events-none whitespace-pre select-none flex flex-col">
@@ -584,7 +584,7 @@ while(true) {
         onMouseEnter={() => setHoveredSection('couture')}
         onMouseLeave={() => setHoveredSection(null)}
         className={`relative bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center group transition-all duration-700 ease-in-out overflow-hidden ${hoveredSection === 'couture' ? 'p-8' : 'p-4 md:p-8'}`}
-        style={{ flex: hoveredSection === 'couture' ? 5 : 1 }}
+        style={{ flex: hoveredSection === 'couture' ? 3 : 1 }}
       >
         <div className="absolute inset-0 bg-stone-50 opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity duration-700"></div>
         
