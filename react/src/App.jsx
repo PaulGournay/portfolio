@@ -45,7 +45,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
 
   return (
     <div className={`relative p-6 flex flex-col group mt-4 ${isCouture ? 'bg-white border-zigzag shadow-brutal' : 'bg-slate-800 border-2 border-slate-700 shadow-[4px_4px_0px_0px_rgba(34,197,94,0.5)]'}`}>
-      
+
       {isCouture && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-slate-200/80 backdrop-blur-sm border border-slate-300 shadow-sm rotate-[-2deg] z-10 flex items-center justify-center">
           <div className="w-2 h-2 rounded-full bg-slate-400 shadow-inner"></div>
@@ -53,7 +53,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
       )}
 
       <div className={`mb-6 w-full border flex items-center justify-center overflow-hidden relative transition-colors group/media ${isCouture ? 'aspect-square bg-stone-100 border-slate-200 cutting-mat-bg group-hover:bg-slate-50' : 'h-72 bg-slate-900 border-slate-600'}`}>
-        
+
         {currentMedia ? (
           <>
             {currentMedia.type === '3d' && (
@@ -62,18 +62,18 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
               </div>
             )}
             {currentMedia.type === 'video' && (
-              <video 
-                src={currentMedia.url} 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
+              <video
+                src={currentMedia.url}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
             )}
             {currentMedia.type === 'image' && (
-              <img 
-                src={currentMedia.url} 
+              <img
+                src={currentMedia.url}
                 alt={`${title} screenshot`}
                 className="w-full h-full object-contain"
               />
@@ -82,13 +82,13 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
             {/* Slider Controls */}
             {hasMultipleMedia && (
               <>
-                <button 
+                <button
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); prevMedia(); }}
                   className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                <button 
+                <button
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); nextMedia(); }}
                   className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/50 hover:bg-slate-800 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/media:opacity-100 transition-opacity z-10 cursor-pointer"
                 >
@@ -98,8 +98,8 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
                 {/* Dots indicator */}
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
                   {media.map((_, idx) => (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       className={`w-2 h-2 rounded-full transition-colors ${idx === currentMediaIndex ? (isCouture ? 'bg-orange-500' : 'bg-green-400') : 'bg-slate-500/50'}`}
                     />
                   ))}
@@ -114,7 +114,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
           </span>
         )}
       </div>
-      
+
       <h3 className={`text-2xl font-bold mb-4 ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>{title}</h3>
       <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag, idx) => (
@@ -127,9 +127,9 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
         {description}
       </div>
       {githubUrl && (
-        <a 
-          href={githubUrl} 
-          target="_blank" 
+        <a
+          href={githubUrl}
+          target="_blank"
           rel="noreferrer"
           className={`mt-auto self-start inline-flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all ${isCouture ? 'bg-slate-800 text-stone-50 shadow-[3px_3px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 hover:bg-green-400 hover:text-slate-900'}`}
         >
@@ -147,7 +147,7 @@ const ProjectCard = ({ title, tags, description, media = [], githubUrl, isCoutur
 
 const Hero = ({ isCouture }) => (
   <section className={`min-h-screen flex items-center justify-center pt-20 pb-12 px-6 relative overflow-hidden ${isCouture ? 'bg-stone-50' : 'bg-slate-900'}`}>
-    
+
     {isCouture ? (
       <>
         <div className="absolute top-0 left-0 w-full h-full opacity-60 pointer-events-none cutting-mat-bg"></div>
@@ -166,7 +166,7 @@ const Hero = ({ isCouture }) => (
 
     <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-up">
       <div className="mb-8 relative inline-block group mt-8 sm:mt-0">
-        
+
         {isCouture ? (
           <>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-orange-500/20 rounded-full blur-3xl animate-[pulse_4s_ease-in-out_infinite] z-0 pointer-events-none"></div>
@@ -178,10 +178,10 @@ const Hero = ({ isCouture }) => (
         )}
 
         <div className={`relative z-20 w-48 h-56 sm:w-64 sm:h-72 flex items-end justify-center ${!isCouture && 'border-b-4 border-green-500'}`}>
-          <img 
-            src={photoProfile} 
-            alt="Photo Profil" 
-            className={`w-auto h-full object-contain object-bottom filter transition-transform duration-500 group-hover:scale-105 ${isCouture ? 'drop-shadow-[0_0_15px_rgba(249,115,22,0.15)] group-hover:-translate-y-2' : 'grayscale contrast-125 sepia-[0.3] hue-rotate-[80deg]'}`} 
+          <img
+            src={photoProfile}
+            alt="Photo Profil"
+            className={`w-auto h-full object-contain object-bottom filter transition-transform duration-500 group-hover:scale-105 ${isCouture ? 'drop-shadow-[0_0_15px_rgba(249,115,22,0.15)] group-hover:-translate-y-2' : 'grayscale contrast-125 sepia-[0.3] hue-rotate-[80deg]'}`}
           />
         </div>
       </div>
@@ -235,7 +235,7 @@ const Portfolio = ({ isCouture }) => {
             Développement complet en VHDL sous Vivado. J'ai intégré une UAL (Unité Arithmétique et Logique) et géré les mémoires, tout en concevant une machine à états (FSM), des timers et un générateur pseudo-aléatoire (LFSR) pour la logique du jeu.
           </p>
           <p>
-            Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment exécuter des instructions bas niveau et concevoir un système numérique robuste et interactif.
+            <strong>Ce que j'en retiens :</strong> Une plongée fascinante dans le "hardware" pur. Ce projet m'a permis de comprendre comment exécuter des instructions bas niveau et concevoir un système numérique robuste et interactif.
           </p>
         </div>
       ),
@@ -256,7 +256,7 @@ const Portfolio = ({ isCouture }) => {
             J'ai programmé un microcontrôleur ESP32 en C++ pour piloter un écran E-paper ultra basse consommation. Côté mécanique, j'ai entièrement modélisé le boîtier sur-mesure avant de l'imprimer en 3D pour assembler parfaitement tous les composants.
           </p>
           <p>
-            La satisfaction immense de concevoir un produit complet de A à Z. C'est l'essence même du Maker : allier le code, l'électronique et la conception 3D pour créer un objet concret et utile au quotidien.
+            <strong>Ce que j'en retiens :</strong> La satisfaction immense de concevoir un produit complet de A à Z. Allier le code, l'électronique et la modélisation 3D pour créer un objet concret et utile au quotidien.
           </p>
         </div>
       ),
@@ -279,7 +279,7 @@ const Portfolio = ({ isCouture }) => {
             Le lecteur CD utilisait un protocole infrarouge propriétaire de 48 bits non documenté. J'ai dû faire de la rétro-ingénierie pour décoder ces trames IR en utilisant une LED réceptrice et un second ESP32. Ce fut un vrai défi car le signal comportait énormément de bruit qu'il a fallu filtrer. J'ai ensuite conçu un circuit d'amplification NPN et utilisé l'API SinricPro pour faire le pont avec l'écosystème Google.
           </p>
           <p>
-            Un vrai travail d'investigation ! Réussir à hacker un vieux signal infrarouge pour le marier avec le cloud moderne m'a beaucoup appris sur le traitement du signal et l'interfaçage hardware.
+            <strong>Ce que j'en retiens :</strong> Un vrai travail d'investigation ! Réussir à hacker un vieux signal infrarouge pour le marier avec le cloud moderne m'a beaucoup appris sur le traitement du signal et l'interfaçage hardware.
           </p>
         </div>
       ),
@@ -300,7 +300,7 @@ const Portfolio = ({ isCouture }) => {
             Se répartir le travail pour créer un menu commun et coder des mécaniques très différentes pour chaque sport (physique du volant, gravité du ballon, jauges de puissance, collisions).
           </p>
           <p>
-            Le projet idéal pour vraiment comprendre la Programmation Orientée Objet (POO) et la collaboration technique (Git). Ça m'a surtout forcé à écrire un code propre et structuré pour que les 4 autres membres de l'équipe puissent bosser dessus sans s'arracher les cheveux !
+            <strong>Ce que j'en retiens :</strong> Le projet idéal pour vraiment comprendre la Programmation Orientée Objet (POO) et la collaboration technique avec Git. Ça m'a forcé à écrire un code propre et structuré pour que les 4 autres membres de l'équipe puissent travailler dessus sans s'arracher les cheveux !
           </p>
         </div>
       ),
@@ -321,11 +321,11 @@ const Portfolio = ({ isCouture }) => {
             Migrer des serveurs en urgence suite à une fuite d'eau, sans jamais poser un serveur lourd sur un plus léger pour éviter la casse. C'est la logique mathématique des Tours de Hanoï appliquée à la vraie vie !
           </p>
           <p>
-            - <em>Modélisation :</em> Traduction du problème physique en graphe (ce qui a fait apparaître visuellement une belle fractale : le Triangle de Sierpiński).<br/>
+            - <em>Modélisation :</em> Traduction du problème physique en graphe (ce qui a fait apparaître visuellement une belle fractale : le Triangle de Sierpiński).<br />
             - <em>Algorithmique :</em> Implémentation de Dijkstra et Floyd-Warshall pour trouver le chemin le plus court et prouver que la migration prendra toujours 2ⁿ - 1 déplacements.
           </p>
           <p>
-            Bien que Dijkstra soit ultra-rapide, j'ai défendu l'usage de Floyd-Warshall. Ce dernier calcule tous les itinéraires à l'avance, ce qui permet au système de s'adapter instantanément si le technicien se trompe de baie en pleine manipulation, sans avoir à recalculer !
+            <strong>Ce que j'en retiens :</strong> L'importance de choisir le bon algorithme selon le contexte. Bien que Dijkstra soit ultra-rapide, j'ai défendu l'usage de Floyd-Warshall. Ce dernier calcule tous les itinéraires à l'avance, ce qui permet au système de s'adapter instantanément si le technicien se trompe de baie en pleine manipulation, sans avoir à recalculer !
           </p>
         </div>
       ),
@@ -346,6 +346,7 @@ const Portfolio = ({ isCouture }) => {
             <li><strong>Modélisation :</strong> Régression Linéaire (incluant descente de gradient manuelle) et KNN optimisé via GridSearchCV. Validation croisée avancée.</li>
             <li><strong>Résultats Clés :</strong> R² de 0,7696 et MAE de 0,45 pour la Régression Linéaire avec OHE.</li>
             <li><strong>Applications :</strong> Système d'alerte précoce pour élèves à risque et conseil académique personnalisé.</li>
+            <li><strong>Ce que j'en retiens :</strong> L'impact crucial de la préparation des données (preprocessing) sur les performances d'un modèle IA, et l'utilité de la validation croisée pour éviter le surapprentissage.</li>
           </ul>
         </div>
       ),
@@ -365,7 +366,10 @@ const Portfolio = ({ isCouture }) => {
             Pour ce projet, j'ai vraiment voulu m'amuser avec les matières et la récup'. L'idée, c'était de créer un sac de voyage 100% unique à partir de pièces qui avaient déjà un vécu. J'ai assemblé un gros patchwork avec plein de trucs différents : du vieux jean, du tissu camouflage, de la flanelle, et même du tissu batik malaisien pour apporter une petite touche d'originalité.
           </p>
           <p>
-            Pour les détails, j'ai récupéré du vrai cuir sur d'anciens manteaux, et j'ai eu l'occasion de tester la gravure laser directement sur le denim pour réaliser les motifs panthère et le lettrage "For Nothing". Et le petit clin d'œil perso dont je suis fier : j'ai cousu le patch d'Efrei Design, pour marquer mon année en tant que président de l'asso !
+            Pour les détails, j'ai récupéré du vrai cuir sur d'anciens manteaux, et j'ai eu l'occasion de tester la gravure laser directement sur le denim pour réaliser les motifs panthère et le lettrage "For Nothing".
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> Travailler des matières techniques comme le jean et le cuir demande une bonne rigueur. Et le petit clin d'œil perso dont je suis fier : avoir cousu le patch d'Efrei Design, pour marquer mon année en tant que président de l'asso !
           </p>
         </div>
       ),
@@ -384,7 +388,10 @@ const Portfolio = ({ isCouture }) => {
             Étant grimpeur, ça me tenait à cœur de fabriquer mon propre matos ! J'ai imaginé ce sac de magnésie en mode upcycling, avec un côté un peu streetwear qui change de ce qu'on voit d'habitude en salle. La structure est faite à partir de vieux pantalons en jean et de chutes de tissu camo que j'ai assemblés en patchwork.
           </p>
           <p>
-            À l'intérieur, j'ai doublé le tout avec de la flanelle pour que la magnésie reste bien en place. J'ai aussi poussé le DIY jusqu'au bout : j'ai modélisé et imprimé mon propre mousqueton en 3D pour l'accrocher au baudrier, et j'ai utilisé de la paracorde pour le système de fermeture, histoire de rester dans l'esprit escalade. Pour finir, j'ai floqué mes initiales en cuir (récupéré dans une ancienne boutique de manteaux) directement sur le devant !
+            À l'intérieur, j'ai doublé le tout avec de la flanelle pour que la magnésie reste bien en place. J'ai aussi poussé le DIY jusqu'au bout : j'ai modélisé et imprimé mon propre mousqueton en 3D pour l'accrocher au baudrier, et j'ai utilisé de la paracorde pour le système de fermeture, histoire de rester dans l'esprit escalade.
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> La conception de A à Z d'un objet utilitaire qui allie couture complexe, modélisation 3D (mousqueton) et flocage personnalisé en cuir. C'est l'aboutissement parfait de ma démarche Maker appliquée au sport !
           </p>
         </div>
       ),
@@ -408,7 +415,7 @@ const Portfolio = ({ isCouture }) => {
             J'ai implémenté les algorithmes de résolution à la main sans bibliothèque externe : méthodes du coin Nord-Ouest et Balas-Hammer pour la solution initiale, parcours en largeur (BFS) pour valider le graphe connexe, puis la méthode du Stepping-Stone pour l'optimisation itérative.
           </p>
           <p>
-            Un excellent projet pour mettre en pratique des concepts mathématiques poussés et développer une logique d'optimisation stricte, tout en gérant le travail collaboratif avec Git.
+            <strong>Ce que j'en retiens :</strong> Un excellent projet pour mettre en pratique des concepts mathématiques poussés et développer une logique d'optimisation stricte, tout en gérant le travail collaboratif de manière efficace.
           </p>
         </div>
       ),
@@ -423,14 +430,14 @@ const Portfolio = ({ isCouture }) => {
 
   return (
     <section className={`py-24 px-6 relative ${isCouture ? 'bg-stone-50' : 'bg-slate-900'}`}>
-      
+
       {isCouture && <div className="absolute inset-0 opacity-40 cutting-mat-bg pointer-events-none"></div>}
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-center ${isCouture ? 'font-serif text-slate-800' : 'font-mono text-stone-50'}`}>
           {isCouture ? 'Portfolio Projets' : 'ls ./projects'}
         </h2>
-        
+
         {isCouture ? (
           <div className="w-32 h-[2px] bg-slate-300 mx-auto mb-16 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-[2px] bg-orange-500"></div>
@@ -459,16 +466,16 @@ const CVViewer = ({ isCouture }) => (
         {isCouture ? 'Mon Curriculum Vitae' : 'cat /docs/cv.pdf'}
       </h2>
       <div className={`w-full h-[80vh] border shadow-xl ${isCouture ? 'border-slate-300 bg-white' : 'border-slate-700 bg-slate-800'} overflow-hidden rounded-lg`}>
-        <iframe 
-          src={cvPdf} 
-          title="CV Paul Gournay" 
+        <iframe
+          src={cvPdf}
+          title="CV Paul Gournay"
           className="w-full h-full"
           style={{ border: 'none' }}
         />
       </div>
       <div className="mt-8 text-center">
-        <a 
-          href={cvPdf} 
+        <a
+          href={cvPdf}
           download="CV_Paul_Gournay_Stage_Robotique_2026.pdf"
           className={`inline-block px-8 py-4 font-bold text-lg transition-all ${isCouture ? 'bg-slate-800 text-stone-50 rounded shadow-[4px_4px_0px_0px_rgba(249,115,22,1)] hover:translate-y-1 hover:shadow-none' : 'bg-transparent text-green-400 border-2 border-green-400 font-mono hover:bg-green-400 hover:text-slate-900'}`}
         >
@@ -521,7 +528,7 @@ const LandingScreen = ({ onSelectTheme }) => {
   const [hoveredSection, setHoveredSection] = useState(null);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -541,7 +548,7 @@ const LandingScreen = ({ onSelectTheme }) => {
       </div>
 
       {/* Côté Code (Haut) */}
-      <div 
+      <div
         onMouseEnter={() => setHoveredSection('code')}
         onMouseLeave={() => setHoveredSection(null)}
         className="relative bg-slate-900 flex flex-col items-center justify-center p-8 group overflow-hidden border-b-4 border-dashed border-orange-500 transition-all duration-700 ease-in-out"
@@ -560,12 +567,12 @@ while(true) {
   listen();
 }`}
         </div>
-        
+
         <h2 className="text-4xl md:text-5xl font-mono font-bold text-stone-50 mb-4 text-center z-10 mt-16 md:mt-16">Ingénierie & Code</h2>
         <p className="text-slate-400 font-mono mb-8 text-center max-w-sm z-10 text-sm md:text-base">Systèmes embarqués, intelligence artificielle, algorithmique et développement logiciel.</p>
-        
+
         {/* Bouton Clavier */}
-        <button 
+        <button
           onClick={() => onSelectTheme('code')}
           className="relative group/btn z-10 focus:outline-none"
         >
@@ -580,52 +587,52 @@ while(true) {
       </div>
 
       {/* Côté Couture (Bas) */}
-      <div 
+      <div
         onMouseEnter={() => setHoveredSection('couture')}
         onMouseLeave={() => setHoveredSection(null)}
         className={`relative bg-stone-50 cutting-mat-bg flex flex-col items-center justify-center group transition-all duration-700 ease-in-out overflow-hidden ${hoveredSection === 'couture' ? 'p-8' : 'p-4 md:p-8'}`}
         style={{ flex: hoveredSection === 'couture' ? 3 : 1 }}
       >
         <div className="absolute inset-0 bg-stone-50 opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity duration-700"></div>
-        
+
         <div className={`flex flex-col items-center transition-transform duration-700 ${hoveredSection === 'couture' ? 'scale-100' : 'scale-90 md:scale-100'}`}>
           <h2 className={`font-serif font-bold text-slate-800 text-center transition-all duration-500 ${hoveredSection === 'couture' ? 'text-4xl md:text-5xl mb-4' : 'text-2xl md:text-3xl mb-2 md:mb-2'}`}>Atelier Couture</h2>
           <p className={`text-slate-500 font-mono text-center max-w-sm transition-all duration-500 ${hoveredSection === 'couture' ? 'text-sm md:text-base mb-8 h-auto opacity-100' : 'text-xs md:text-sm mb-4 md:mb-2 h-0 md:h-auto opacity-0 md:opacity-100 overflow-hidden'}`}>Design textile, modélisation 3D et confection sur-mesure.</p>
-        
-        {/* Composant Ciseaux Slider avec Canvas 3D */}
-        <div className={`relative flex items-center transition-all duration-500 ${hoveredSection === 'couture' ? 'w-80 h-16 mt-2 opacity-100' : 'w-80 h-16 mt-2 opacity-100 md:h-0 md:mt-0 md:opacity-0 md:overflow-hidden'}`}>
-          {/* Ligne pointillée type patron de couture */}
-          <div className="absolute left-8 right-0 h-0 border-t-[3px] border-dashed border-slate-700 opacity-80 z-0"></div>
-          
-          {/* Texte d'indication */}
-          <span className="absolute right-0 -top-6 text-slate-700 font-mono text-sm pointer-events-none uppercase tracking-widest font-bold">
-            Couper ici &rarr;
-          </span>
-          
-          <motion.div 
-            drag="x"
-            dragConstraints={{ left: 0, right: 260 }}
-            dragElastic={0.1}
-            onDragStart={() => setIsDragging(true)}
-            onDragEnd={(e, info) => {
-              setIsDragging(false);
-              if (info.offset.x > 200) {
-                onSelectTheme('couture');
-              }
-            }}
-            className="w-16 h-16 bg-transparent flex items-center justify-center cursor-grab active:cursor-grabbing z-10 relative drop-shadow-xl"
-          >
-            {/* Scène 3D des Ciseaux */}
-            <div className="w-32 h-32 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
-                <ambientLight intensity={1} />
-                <directionalLight position={[5, 5, 5]} intensity={1.5} />
-                <directionalLight position={[-5, -5, -5]} intensity={0.5} />
-                <Scissors3D isDragging={isDragging} />
-              </Canvas>
-            </div>
-          </motion.div>
-        </div>
+
+          {/* Composant Ciseaux Slider avec Canvas 3D */}
+          <div className={`relative flex items-center transition-all duration-500 ${hoveredSection === 'couture' ? 'w-80 h-16 mt-2 opacity-100' : 'w-80 h-16 mt-2 opacity-100 md:h-0 md:mt-0 md:opacity-0 md:overflow-hidden'}`}>
+            {/* Ligne pointillée type patron de couture */}
+            <div className="absolute left-8 right-0 h-0 border-t-[3px] border-dashed border-slate-700 opacity-80 z-0"></div>
+
+            {/* Texte d'indication */}
+            <span className="absolute right-0 -top-6 text-slate-700 font-mono text-sm pointer-events-none uppercase tracking-widest font-bold">
+              Couper ici &rarr;
+            </span>
+
+            <motion.div
+              drag="x"
+              dragConstraints={{ left: 0, right: 260 }}
+              dragElastic={0.1}
+              onDragStart={() => setIsDragging(true)}
+              onDragEnd={(e, info) => {
+                setIsDragging(false);
+                if (info.offset.x > 200) {
+                  onSelectTheme('couture');
+                }
+              }}
+              className="w-16 h-16 bg-transparent flex items-center justify-center cursor-grab active:cursor-grabbing z-10 relative drop-shadow-xl"
+            >
+              {/* Scène 3D des Ciseaux */}
+              <div className="w-32 h-32 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <directionalLight position={[5, 5, 5]} intensity={1.5} />
+                  <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+                  <Scissors3D isDragging={isDragging} />
+                </Canvas>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -646,14 +653,14 @@ export default function App() {
   const isCouture = currentView === 'couture';
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className={`font-sans ${isCouture ? 'bg-stone-50 text-slate-800 selection:bg-orange-500' : 'bg-slate-900 text-stone-50 selection:bg-green-500'} selection:text-white min-h-screen relative`}
     >
       {/* Bouton retour au Landing */}
-      <button 
-        onClick={() => setCurrentView('landing')} 
+      <button
+        onClick={() => setCurrentView('landing')}
         className={`fixed top-4 left-4 z-50 px-4 py-2 backdrop-blur rounded font-mono text-xs transition-colors border ${isCouture ? 'bg-white/50 border-slate-300 text-slate-600 hover:bg-orange-500 hover:text-white hover:border-orange-500' : 'bg-slate-800/50 border-slate-600 text-slate-400 hover:bg-green-500 hover:text-slate-900 hover:border-green-500'}`}
       >
         &larr; Retour
