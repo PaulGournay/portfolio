@@ -29,6 +29,7 @@ import joGame4 from './assets/JO-Games_project/JO_Game_Basketball.png';
 import passerelleImg from './assets/esp_32_connected_cd_player_.jpg';
 import orProjectImg from './assets/Operations_research_project.png';
 import logoEfrei from './assets/Logo efrei design couleur.png';
+import cheeseScannerVideo from './assets/Lecture_fleche_robot.mp4';
 
 // --- COMPOSANTS RÉUTILISABLES ---
 
@@ -223,6 +224,27 @@ const Hero = ({ isCouture }) => (
 
 const Portfolio = ({ isCouture }) => {
   const allProjects = [
+    {
+      title: "Cheese-Scanner (Robot Autonome PiCar-B)",
+      tags: ["Python", "Raspberry Pi", "OpenCV", "Robotique Autonome", "IoT", "Méthode Hybride"],
+      description: (
+        <div className="flex flex-col gap-4">
+          <p>
+            Conception et programmation d'un robot autonome basé sur un kit Adeept PiCar-B piloté par une Raspberry Pi 4. Son but initial : inspecter en continu les caves d'affinage de fromages.
+          </p>
+          <p>
+            Le projet met en œuvre la navigation autonome par suivi de ligne (infrarouge), l'évitement d'obstacles via un capteur à ultrasons, ainsi qu'une navigation avancée par reconnaissance visuelle. J'ai utilisé OpenCV pour traiter les images de la caméra en temps réel afin de repérer et suivre des lignes rouges ou de décoder des flèches directionnelles dans un labyrinthe, le tout de manière 100% locale sans connexion réseau.
+          </p>
+          <p>
+            <strong>Ce que j'en retiens :</strong> L'intégration réussie de capteurs variés (caméra, ultrasons, infrarouges) dans un environnement physique complexe. Travailler sur ce projet m'a permis d'approfondir mes compétences en robotique embarquée, en traitement d'images avec OpenCV, ainsi que la gestion de projet en méthode hybride (Scrum/Agile).
+          </p>
+        </div>
+      ),
+      media: [
+        { type: 'video', url: cheeseScannerVideo }
+      ],
+      githubUrl: "https://github.com/PaulGournay/adeept_picar_b2_MasterCamp.git"
+    },
     {
       title: "LogiGame (Architecture Matérielle)",
       tags: ["VHDL", "FPGA Xilinx Artix-7", "Vivado", "Architecture Matérielle"],
